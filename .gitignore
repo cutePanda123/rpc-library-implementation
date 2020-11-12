@@ -1,2 +1,3 @@
 .idea/*
 rpc-demo.iml
+**/target/*
