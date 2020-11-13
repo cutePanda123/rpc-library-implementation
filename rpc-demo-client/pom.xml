@@ -10,6 +10,31 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>rpc-demo-client</artifactId>
-
+    <dependencies>
+        <dependency>
+            <groupId>com.peter</groupId>
+            <artifactId>rpc-demo-proto</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.peter</groupId>
+            <artifactId>rpc-demo-codec</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.peter</groupId>
+            <artifactId>rpc-demo-transport</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.peter</groupId>
+            <artifactId>rpc-demo-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
