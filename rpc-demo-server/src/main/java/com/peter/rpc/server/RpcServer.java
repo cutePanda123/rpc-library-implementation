@@ -74,4 +74,8 @@ public class RpcServer {
         serviceInvoker = new ServiceInvoker();
         serviceManager = new ServiceManager();
     }
+
+    public RpcServer() {
+        this(new RpcServerConfig());
+    }
 }
