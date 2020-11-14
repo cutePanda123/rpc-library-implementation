@@ -30,7 +30,7 @@ public class RpcClient {
         );
     }
 
-    public <T> T getClientProxy(Class<T> clazz) {
+    public <T> T getServiceProxy(Class<T> clazz) {
         return (T) Proxy.newProxyInstance(
                 getClass().getClassLoader(),
                 new Class[] {clazz},
