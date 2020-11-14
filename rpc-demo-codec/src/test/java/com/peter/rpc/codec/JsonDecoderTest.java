@@ -12,7 +12,7 @@ public class JsonDecoderTest {
         TestClass obj = new TestClass("peter", 100);
         byte[] bytes = encoder.encode(obj);
 
-        Deconder decoder = new JsonDecoder();
+        Decoder decoder = new JsonDecoder();
         TestClass decodedObj = decoder.decode(bytes, TestClass.class);
         assertEquals(decodedObj.getAge(), 100);
         assertEquals(decodedObj.getName(), "peter");

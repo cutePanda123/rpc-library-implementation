@@ -1,6 +1,6 @@
 package com.peter.rpc.server;
 
-import com.peter.rpc.codec.Deconder;
+import com.peter.rpc.codec.Decoder;
 import com.peter.rpc.codec.Encoder;
 import com.peter.rpc.common.utils.ReflectionUtils;
 import com.peter.rpc.proto.ResponseStatus;
@@ -20,7 +20,7 @@ public class RpcServer {
     private RpcServerConfig config;
     private TransportServer transportServer;
     private Encoder encoder;
-    private Deconder deconder;
+    private Decoder decoder;
     private ServiceManager serviceManager;
     private ServiceInvoker serviceInvoker;
     private RequestHandler handler = new RequestHandler() {
@@ -29,7 +29,7 @@ public class RpcServer {
             RpcResponse response = new RpcResponse();
             try {
                 byte[] payload = IOUtils.readFully(inbound, inbound.available(), true);
-                RpcRequest request = deconder.decode(payload, RpcRequest.class);
+                RpcRequest request = decoder.decode(payload, RpcRequest.class);
                 log.info("get request: {}", request);
 
                 ServiceInstance serviceInstance = serviceManager.lookup(request);
@@ -69,7 +69,7 @@ public class RpcServer {
         transportServer = ReflectionUtils.newInstance(config.getTransportClass());
         transportServer.init(config.getPort(), this.handler);
         encoder = ReflectionUtils.newInstance(config.getEncoderClass());
-        deconder = ReflectionUtils.newInstance(config.getDecoderClass());
+        decoder = ReflectionUtils.newInstance(config.getDecoderClass());
 
         serviceInvoker = new ServiceInvoker();
         serviceManager = new ServiceManager();
